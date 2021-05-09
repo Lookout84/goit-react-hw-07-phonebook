@@ -1,0 +1,13 @@
+body {
+  margin: 0;
+  background-color: rgb(241, 232, 232);
+  color: #000;
+  line-height: 1.2;
+  padding-inline-start: 0;
+}
+
+img {
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
