@@ -2,7 +2,8 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import style from './ContactForm.module.css';
 import { connect } from 'react-redux';
-import actions from '../../redux/actions';
+// import actions from '../../redux/actions';
+import { operations, selectors } from '../../redux';
 
 class ContactForm extends Component {
   state = {
@@ -15,7 +16,6 @@ class ContactForm extends Component {
     this.setState({
       [name]: value,
     });
-    console.log(this.state);
   };
 
   handleSubmit = e => {
@@ -32,8 +32,6 @@ class ContactForm extends Component {
     }
     onSubmit(this.state);
     this.setState({ name: '', number: '' });
-    console.log(name);
-    console.log(number);
   };
 
   render() {
@@ -67,16 +65,12 @@ class ContactForm extends Component {
   }
 }
 
-// const mapStateToProps = state => {
-//   return { state };
-// };
-
 const mapStateToProps = state => ({
-  contacts: state.contacts.items,
+  contacts: selectors.getAllContacts(state),
 });
 
 const mapDispatchToProps = dispatch => ({
-  onSubmit: (name, number) => dispatch(actions.addNewContact(name, number)),
+  onSubmit: (name, number) => dispatch(operations.addNewContact(name, number)),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(ContactForm);

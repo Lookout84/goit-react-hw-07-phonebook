@@ -1,38 +1,30 @@
-import shortid from 'shortid';
-// import { ADD, DELETE, FILTER } from './types';
+// import shortid from 'shortid';
 import { createAction } from '@reduxjs/toolkit';
 
-// const addNewContact = (name, number) => ({
-//   type: ADD,
-//   payload: { contacts: { id: shortid.generate(), name: name, number: number } },
-// });
+const fetchContactsRequest = createAction('contacts/fetchContactsRequest');
+const fetchContactsSuccess = createAction('contacts/fetchContactsSuccess');
+const fetchContactsError = createAction('contacts/fetchContactsError');
 
-// const deleteContact = contactId => ({
-//   type: DELETE,
-//   payload: { id: contactId },
-// });
+const addContactRequest = createAction('contacts/addContactsRequest');
+const addContactSuccess = createAction('contacts/addContactsSuccess');
+const addContactError = createAction('contacts/addContactsError');
 
-// const filterContact = filter => ({
-//   type: FILTER,
-//   payload: filter,
-// });
-
-const addNewContact = createAction(
-  'contacts/AddNewContact',
-  ({ name, number }) => {
-    return {
-      payload: {
-        id: shortid.generate(),
-        name,
-        number,
-      },
-    };
-  },
-);
-
-const deleteContact = createAction('contacts/DeleteContact');
+const deleteContactRequest = createAction('contacts/deleteContactsRequest');
+const deleteContactSuccess = createAction('contacts/deleteContactsSuccess');
+const deleteContactError = createAction('contacts/deleteContactsError');
 
 const filterContact = createAction('contacts/FilterContact');
 
 // eslint-disable-next-line import/no-anonymous-default-export
-export default { addNewContact, deleteContact, filterContact };
+export default {
+  fetchContactsRequest,
+  fetchContactsSuccess,
+  fetchContactsError,
+  addContactRequest,
+  addContactSuccess,
+  addContactError,
+  deleteContactRequest,
+  deleteContactSuccess,
+  deleteContactError,
+  filterContact,
+};
